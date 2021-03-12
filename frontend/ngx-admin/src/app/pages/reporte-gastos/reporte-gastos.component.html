@@ -1,0 +1,123 @@
+<div class="row" *ngIf="usuario.gerente_cc == 'S' && usuario.grupoAsig == 'No'" >
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Reporte de gastos para Gerentes sin Grupo
+      </nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="frm_rangepickerGerenteSinGrupo" class="form-inline">
+
+            <input   formControlName="rango1" fullWidth nbInput placeholder="Seleccione rango de fechas a generar" [nbDatepicker]="rango1">
+            <nb-rangepicker #rango1></nb-rangepicker>
+
+        </form>
+      </nb-card-body>
+      <button style="margin-top: 5px;" (click)="generarReportePagosEstandarSGrupo()" nbButton status="primary">Generar</button>
+
+      
+    </nb-card>
+  </div>
+</div>
+
+
+<div class="row" *ngIf="usuario.gerente_cc == 'S' && usuario.grupoAsig != 'No'" >
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Reporte de gastos para Gerentes con grupo
+      </nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="frm_rangepickerGerenteConGrupo" class="form-inline">
+
+            <input   formControlName="rango2" fullWidth nbInput placeholder="Seleccione rango de fechas a generar" [nbDatepicker]="rango2">
+            <nb-rangepicker #rango2></nb-rangepicker>
+
+        </form>
+      </nb-card-body>
+      <button style="margin-top: 5px;" (click)="generarReportePagosGerenteConGrupo()" nbButton status="primary">Generar</button>
+
+      
+    </nb-card>
+  </div>
+</div>
+
+
+<div class="row" *ngIf="usuario.gerente_cc == 'N'" >
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Reporte de gastos para No Gerentes
+      </nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="frm_rangepickerNoGerentes" class="form-inline">
+
+            <input   formControlName="rango3" fullWidth nbInput placeholder="Seleccione rango de fechas a generar" [nbDatepicker]="rango3">
+            <nb-rangepicker #rango3></nb-rangepicker>
+
+        </form>
+      </nb-card-body>
+      <button style="margin-top: 5px;" (click)="generarReportePagosNoGerente()" nbButton status="primary">Generar</button>
+
+      
+    </nb-card>
+  </div>
+</div>
+
+
+<nb-card *ngIf="progressBar">
+  <nb-card-body>
+    <nb-progress-bar [value]="40" status="success" [displayValue]="true"></nb-progress-bar>
+  </nb-card-body>
+</nb-card>
+
+<nb-table *ngIf="verTabla">
+
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th>Anio</th>
+            <th>Fecha Movimiento</th>
+            <th>Cuenta</th>
+            <th>Nombre de cuenta</th>
+            <th>N° CCostos</th>
+            <th>Nombre CCostos</th>
+            <th>Tipo de gasto</th>
+            <th>Nombre de Tipo gasto</th>
+            <th>Tipo tarifario</th>
+            <th>Nombre de Tipo tarifario</th>
+            <th>N° Cla Gasto</th>
+            <th>Nombre Cla Gasto</th>
+            <th>Descripción</th>
+            <th>Valor</th>
+            <th>Tipo Movimiento ID</th>
+            <th>Partida ID</th>
+            <th>Partida referencia</th>
+            <th>Estado partida ID</th>
+          </tr>
+        </thead>
+    
+        <tbody>
+          <tr *ngFor="let obj of listaSQL">
+            <td>{{obj.mes}}</td>
+            <td>{{obj.anio}}</td>
+            <td>{{obj.fecha_movimiento}}</td>
+            <td>{{obj.cuenta}}</td>
+            <td>{{obj.nombre_cuenta}}</td>
+            <td>{{obj.centro_costo}}</td>
+            <td>{{obj.nombre_ccosto}}</td>
+            <td>{{obj.tipo_gasto}}</td>
+            <td>{{obj.nombre_tipo_gasto}}</td>
+            <td>{{obj.tipo_tarifario}}</td>
+            <td>{{obj.nombre_tipo_tarifario}}</td>
+            <td>{{obj.cla_gasto}}</td>
+            <td>{{obj.nombre_cla_gasto}}</td>
+            <td>{{obj.descripcion}}</td>
+            <td>$ {{obj.valor}}</td>
+            <td>{{obj.tipo_movimiento_id}}</td>
+            <td>{{obj.partida_id}}</td>
+            <td>{{obj.partida_referencia}}</td>
+            <td>{{obj.estado_partida_id}}</td>
+          </tr>
+        </tbody>
+  
+<nb-table>
+  
+
+

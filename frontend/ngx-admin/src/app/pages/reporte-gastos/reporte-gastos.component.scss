@@ -1,0 +1,29 @@
+nb-table{
+    font-size: 12px !important;
+    overflow-x: scroll !important;
+    height: 300px !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+    align-items: center !important;
+    margin: auto !important;
+    
+}
+
+th{
+    text-align: center !important;
+    height: 15px !important;
+    align-items: center !important;
+    background-color: #24024D !important;
+    color: white !important;
+    border-right: 2px solid #e8e8e8;
+}
+
+tbody tr{
+ border-bottom: 2px solid #e8e8e8;
+}
+
+tbody tr td{
+    border-right: 2px solid #e8e8e8;
+    text-align: center !important;
+}
